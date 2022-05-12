@@ -69,19 +69,29 @@ const changeBackward = () => {
 
 
 // create slider function and assign to left-right-down-up arrow keys
-const leftRightArrows = (e) => {
+const arrowsSlide = (e) => {
   e.preventDefault()
-  console.log(e.keyCode)
-  if (e.keyCode === 37) {
-    changeBackward()
-    console.log('left')
-  } else if (e.keyCode === 39) {
-    changeForward()
-    console.log('right')
-  }
+  // console.log(e.keyCode)
+  // if (e.keyCode === 37) {
+  //   changeBackward()
+  //   console.log('left')
+  // } else if (e.keyCode === 39) {
+  //   changeForward()
+  //   console.log('right')
+  // } else if (e.keyCode === 40) {
+  //   console.log('down')
+  // } else if (e.keyCode === 38) {
+  //   console.log('up')
+  // }
+
+  return e.keyCode === 37 ? changeBackward()
+  : e.keyCode === 39 ? changeForward()
+  : e.keyCode === 40 ? console.log('down')
+  : e.keyCode === 38 ? console.log('up')
+  : console.log('keyCode error!');
 }
 
-document.addEventListener('keydown', leftRightArrows)
+document.addEventListener('keydown', arrowsSlide)
 
 // // create slide function and assign to down-up arrow keys
 // const downUpArrows = (e) => {
