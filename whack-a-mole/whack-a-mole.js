@@ -51,6 +51,17 @@ molesHole.setAttribute('onclick', 'moleClicked()')
 }
 showMole()
 
+//create a function to remove mole from old hole
+//target hole mole is in and store in a variable
+//find child elements of that variable
+//when called function should remove child element
+const removeOldMole = (parent) => {
+  let child = document.getElementsByClassName('moleSize')
+  console.log(moleIsHere)
+  return parent.removeChild(child)
+}
+// removeOldMole()
+
 
 //create a function to play audio
 let audio = new Audio('./whack-audio.wav')
@@ -63,7 +74,7 @@ const whackMole = () => {
 
 
 //create an onclick function to call shuffle mole function
-//onclick call whackMole
+//onclick call whackMolegit
 //onclick call the showMole function
 const moleClicked = () => {
   whackMole()
