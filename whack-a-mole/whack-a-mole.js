@@ -51,7 +51,25 @@ moleImgElm.setAttribute('class', 'moleSize')
 showMole()
 
 
+//create a function to play audio
+//store audio in a variable
+//create true false variable
+let audio = new Audio('./whack-audio.wav')
+audio.play()
+// let playAudio = false
+//when called change variable to true 
+// use settimeout to make it true and back to false
+// if true play audio else return
+const whackMole = () => {
+  audio.play()
+}
+// whackMole()
+
+
+
 //create an onclick function to call shuffle mole function
+//onclick call whackMole
+//onclick call the showMole function
 
 
 
