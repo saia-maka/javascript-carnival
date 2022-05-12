@@ -20,9 +20,21 @@ const minNum = 1
 const maxNum = cells.length
 // generate random number
 const getRandomNumber = (min, max) => {
-  console.log(Math.floor(Math.random() * max) + min)
-  // return Math.random()
+  // console.log(Math.floor(Math.random() * max) + min)
+  return Math.random(Math.floor(Math.random() * max) + min)
 }
+
+//create shuffle mole function access array and select random element with in using getRandomNumber
+
+
+
+
+//create an onclick function to call shuffle mole function
+
+
+
+
+//loop through cells and add onclick function
 
 
 
