@@ -6,9 +6,9 @@ console.log("Dress The Clown!")
 
 // Setup
   //image arrays
-  const head = ['head0.png', 'head1.png', 'head2.png', 'head3.png', 'head4.png', 'head5.png']
-  const body = ['body0.png', 'body1.png', 'body2.png', 'body3.png', 'body4.png', 'body5.png']
-  const shoes = ['shoes0.png', 'shoes1.png', 'shoes2.png', 'shoes3.png', 'shoes4.png', 'shoes5.png']
+  const head = ['./images/head0.png', './images/head1.png', './images/head2.png', './images/head3.png', './images/head4.png', './images/head5.png']
+  const body = ['./images/body0.png', './images/body1.png', './images/body2.png', './images/body3.png', './images/body4.png', './images/body5.png']
+  const shoes = ['./images/shoes0.png', './images/shoes1.png', './images/shoes2.png', './images/shoes3.png', './images/shoes4.png', './images/shoes5.png']
   // elements arrays
   const elmArr = document.getElementsByTagName('img')
   const elmIds = ['head', 'body', 'shoes']
@@ -17,14 +17,29 @@ console.log("Dress The Clown!")
     elmArr[i].setAttribute('id', elmIds[i])
   }
   // create counter variables
-  let headCount = 0;
-  let bodyCount = 0;
-  let shoesCount = 0;
+  let headCount = 3;
+  let bodyCount = 4;
+  let shoesCount = 4;
 
   
 
 
 // create function to change forward
-  // takes in array of images
-  // 
-const changeForward = () => {};
+// takes in counter for body part
+// takes in image element to change
+// takes in array of images
+const changeForward = (partCount, elm, arr) => {
+ partCount++ 
+ elm.setAttribute('src', arr[partCount])
+};
+// changeForward(headCount, elmArr[0], head)
+
+// create function to change forward
+// takes in counter for body part
+// takes in image element to change
+// takes in array of images
+const changeBackward = (partCount, elm, arr) => {
+  partCount-- 
+  elm.setAttribute('src', arr[partCount])
+ };
+//  changeForward(bodyCount, elmArr[1], body)
