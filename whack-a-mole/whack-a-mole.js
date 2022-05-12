@@ -4,10 +4,6 @@
 
 console.log("Whack-a-Mole!")
 
-// - The ability to store or get references to the cells in the HTML table.
-// - A function to randomly select which cell should show the mole.
-// - A way to show a mole in the chosen cell.
-
 //setup
 // create an array of cells
 const cells = document.getElementsByTagName('td')
@@ -41,7 +37,7 @@ startingHole.appendChild(moleImgElm) // add image element to cell
 const removeOldMole = () => {
   let child = moleImgElm
  startingHole.removeChild(child)
- console.log(startingHole)
+//  console.log(startingHole)
 }
 // removeOldMole()
 
@@ -62,18 +58,14 @@ const newMole = () => {
   startingHole.appendChild(moleImgElm)
 }
 
-
 //create a function to play audio
 let audio = new Audio('./whack-audio.wav')
 const whackMole = () => {
   audio.play()
   console.log('play audio')
 }
-// whackMole()
 
 //create an onclick function to call shuffle mole function
-//onclick call whackMolegit
-//onclick call the showMole function
 const moleClicked = () => {
   whackMole()
   removeOldMole()
