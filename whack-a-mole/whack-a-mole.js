@@ -9,14 +9,12 @@ console.log("Whack-a-Mole!")
 // - A way to show a mole in the chosen cell.
 
 //setup
-
 // create an array of cells
 const cells = document.getElementsByTagName('td')
 // console.log(cells[7])
 
 // add filepath to mole in a variable
 const mole = './mole.PNG'
-
 
 
 // random number function
@@ -29,38 +27,40 @@ const getRandomNumber = (min, max) => {
   return Math.floor(Math.random() * max) + min
 }
 
-// create shuffle mole function access array and select random element with in using getRandomNumber
-// add filepath to a variable and store in setup section
-// create funciton thats takes an array as arguments
-// select random element in arr and place in variable called molesHole
-// create a image element and store in a variable called moleImgElm
-// append and image element to molesHole
-// return
-const showMole = (arr) => {
- const randomNum = getRandomNumber(minNum, maxNum)
- console.log(randomNum)
- const molesHole = cells[randomNum]
-//  console.log(molesHole)
-//  const moleImgElm = <img src="./mole.PNG"/>
-let moleImgElm = document.createElement('img')
-// console.log(moleImgElm)
-moleImgElm.setAttribute('src', mole)
-moleImgElm.setAttribute('class', 'moleSize')
-molesHole.setAttribute('onclick', 'moleClicked()')
- molesHole.appendChild(moleImgElm)
-}
-showMole()
+let num = getRandomNumber(minNum, maxNum) //starting random num and random number holder
+let startingHole = cells[num] //starting cell and cell holder
+let moleImgElm = document.createElement('img') //img element holder
+moleImgElm.setAttribute('src', mole) //create src attribute and filepath to mole image
+moleImgElm.setAttribute('class', 'moleSize') //give mole class and styling
+startingHole.setAttribute('onclick', 'moleClicked()') //give cell onclick function
+startingHole.appendChild(moleImgElm) // add image element to cell
 
-//create a function to remove mole from old hole
-//target hole mole is in and store in a variable
-//find child elements of that variable
-//when called function should remove child element
-const removeOldMole = (parent) => {
-  let child = document.getElementsByClassName('moleSize')
-  console.log(moleIsHere)
-  return parent.removeChild(child)
+//create remove old mole function
+//find starting hole
+//remove mole
+const removeOldMole = () => {
+  let child = moleImgElm
+ startingHole.removeChild(child)
+ console.log(startingHole)
 }
 // removeOldMole()
+
+//create function to show new mole
+//generate new random num and assign to variable 'num'
+// reassign moleImeElm as new img element
+// set src attribute
+// set class attribute
+// set onclick attribute to startingHole
+// append moleImgElm to startingHole
+const newMole = () => {
+  num = getRandomNumber(minNum, maxNum)
+  startingHole = cells[num]
+  moleImgElm = document.createElement('img')
+  moleImgElm.setAttribute('src', mole)
+  moleImgElm.setAttribute('class', 'moleSize')
+  startingHole.setAttribute('onclick', 'moleClicked()')
+  startingHole.appendChild(moleImgElm)
+}
 
 
 //create a function to play audio
@@ -71,22 +71,15 @@ const whackMole = () => {
 }
 // whackMole()
 
-
-
 //create an onclick function to call shuffle mole function
 //onclick call whackMolegit
 //onclick call the showMole function
 const moleClicked = () => {
   whackMole()
-  showMole()
+  removeOldMole()
+  newMole()
 }
 
-
-
-//loop through cells and add onclick function
-// for (let i = 0; i < cells.length; i++) {
-//   cells[i] = moleClicked
-// }
 
 
 
