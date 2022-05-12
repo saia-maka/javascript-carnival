@@ -43,25 +43,20 @@ const showMole = (arr) => {
 //  console.log(molesHole)
 //  const moleImgElm = <img src="./mole.PNG"/>
 let moleImgElm = document.createElement('img')
-console.log(moleImgElm)
+// console.log(moleImgElm)
 moleImgElm.setAttribute('src', mole)
 moleImgElm.setAttribute('class', 'moleSize')
+molesHole.setAttribute('onclick', 'moleClicked()')
  molesHole.appendChild(moleImgElm)
 }
 showMole()
 
 
 //create a function to play audio
-//store audio in a variable
-//create true false variable
 let audio = new Audio('./whack-audio.wav')
-audio.play()
-// let playAudio = false
-//when called change variable to true 
-// use settimeout to make it true and back to false
-// if true play audio else return
 const whackMole = () => {
   audio.play()
+  console.log('play audio')
 }
 // whackMole()
 
@@ -70,11 +65,17 @@ const whackMole = () => {
 //create an onclick function to call shuffle mole function
 //onclick call whackMole
 //onclick call the showMole function
-
+const moleClicked = () => {
+  whackMole()
+  showMole()
+}
 
 
 
 //loop through cells and add onclick function
+// for (let i = 0; i < cells.length; i++) {
+//   cells[i] = moleClicked
+// }
 
 
 
