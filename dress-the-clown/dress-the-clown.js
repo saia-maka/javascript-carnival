@@ -63,16 +63,17 @@ const changeBackward = () => {
   currentElm.setAttribute('src', currentPart[currentCount])
 }
 
-//
+//create down&up functions to change which body part to edit. Only 3 body parts to toggle through. create counter max=3 min= 0.
+// if count goes over 3 set to 0 & vice versa. 
 const changeDown = () => {
-  if (currentlyEditingCount >= imagesArray.length - 1) {
+  if (currentlyEditingCount >= imagesArray.length - 1) { 
     currentlyEditingCount = 0
   } else {
     currentlyEditingCount++
   }
-  currentCount = whichCountArr[currentlyEditingCount]
- currentElm = elmArr[currentlyEditingCount]
- currentPart = imagesArray[currentlyEditingCount]
+  currentCount = whichCountArr[currentlyEditingCount] // set leftRight count var to correct counter. 
+ currentElm = elmArr[currentlyEditingCount] // set current element to toggled element
+ currentPart = imagesArray[currentlyEditingCount] // set current array of images to body part currently toggled
 }
 
 const changeUp = () => {
@@ -81,9 +82,9 @@ const changeUp = () => {
   } else {
     currentlyEditingCount--
   }
-  currentCount = whichCountArr[currentlyEditingCount]
-  currentElm = elmArr[currentlyEditingCount]
-  currentPart = imagesArray[currentlyEditingCount]
+  currentCount = whichCountArr[currentlyEditingCount] // set leftRight count var to correct counter. 
+  currentElm = elmArr[currentlyEditingCount] // set current element to toggled element
+  currentPart = imagesArray[currentlyEditingCount] // set current image showing to correct 
 }
 
 // create slider function and assign to left-right-down-up arrow keys
