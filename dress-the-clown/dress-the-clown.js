@@ -28,22 +28,27 @@ console.log("Dress The Clown!")
   //create variable to hold current part
   let currentPart = head
 
-  
+  //create variable to hold current edit count
+  let currentlyEditingCount = 0
+  //create variable to hold current element to edit
+  let currentElmToEdit = elmArr[0]
+  //create var to hold whichcount arr && var to hold array of images array && var to hold current images array
+  let whichCountArr = [headCount, bodyCount, shoesCount]
+  let imagesArray = [head, body, shoes]
+  let currentImageArray = imagesArray[currentlyEditingCount]
 
-
-// create function to change forward & back
-//if count is equal to image arr.length - 1
-//set count to 0 else increment
-//if count is equal to 0
-// set count to image array.lengh - 1 else decrement
-// set current image src attribute to arrImages[count]
-
+ // create function to change forward & back
+ //if count is equal to image arr.length - 1
+ //set count to 0 else increment
+ //if count is equal to 0
+ // set count to image array.lengh - 1 else decrement
+ // set current image src attribute to arrImages[count]
 const changeForward = () => {
   if (currentCount >= currentPart.length - 1) {
     currentCount = 0
   } else {
     currentCount++
-    console.log(currentCount)
+    // console.log(currentCount)
   }
   currentElm.setAttribute('src', currentPart[currentCount])
 }
@@ -53,49 +58,41 @@ const changeBackward = () => {
     currentCount = currentPart.length - 1
   } else {
     currentCount--
-    console.log(currentCount)
+    // console.log(currentCount)
   }
   currentElm.setAttribute('src', currentPart[currentCount])
 }
 
+//
+const changeDown = () => {
+  if (currentlyEditingCount >= imagesArray.length - 1) {
+    currentlyEditingCount = 0
+  } else {
+    currentlyEditingCount++
+  }
+  currentCount = whichCountArr[currentlyEditingCount]
+ currentElm = elmArr[currentlyEditingCount]
+ currentPart = imagesArray[currentlyEditingCount]
+}
 
-
-
-
-
-
-
-
-
+const changeUp = () => {
+  if (currentlyEditingCount === 0) {
+    currentlyEditingCount = imagesArray.length - 1
+  } else {
+    currentlyEditingCount--
+  }
+  currentCount = whichCountArr[currentlyEditingCount]
+  currentElm = elmArr[currentlyEditingCount]
+  currentPart = imagesArray[currentlyEditingCount]
+}
 
 // create slider function and assign to left-right-down-up arrow keys
 const arrowsSlide = (e) => {
   e.preventDefault()
-  // console.log(e.keyCode)
-  // if (e.keyCode === 37) {
-  //   changeBackward()
-  //   console.log('left')
-  // } else if (e.keyCode === 39) {
-  //   changeForward()
-  //   console.log('right')
-  // } else if (e.keyCode === 40) {
-  //   console.log('down')
-  // } else if (e.keyCode === 38) {
-  //   console.log('up')
-  // }
-
   return e.keyCode === 37 ? changeBackward()
   : e.keyCode === 39 ? changeForward()
-  : e.keyCode === 40 ? console.log('down')
-  : e.keyCode === 38 ? console.log('up')
+  : e.keyCode === 40 ? changeDown()
+  : e.keyCode === 38 ? changeUp()
   : console.log('keyCode error!');
 }
-
 document.addEventListener('keydown', arrowsSlide)
-
-// // create slide function and assign to down-up arrow keys
-// const downUpArrows = (e) => {
-//   e.preventDefault()
-//   console.log(e.keyCode)
-// }
-// document.addEventListener('keydown', downUpArrows)
