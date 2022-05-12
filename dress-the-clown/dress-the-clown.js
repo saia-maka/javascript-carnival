@@ -11,35 +11,81 @@ console.log("Dress The Clown!")
   const shoes = ['./images/shoes0.png', './images/shoes1.png', './images/shoes2.png', './images/shoes3.png', './images/shoes4.png', './images/shoes5.png']
   // elements arrays
   const elmArr = document.getElementsByTagName('img')
-  const elmIds = ['head', 'body', 'shoes']
+  const parts = ['head', 'body', 'shoes']
   // give elements id head, body, shoes
   for (let i = 0; i < elmArr.length; i++) {
-    elmArr[i].setAttribute('id', elmIds[i])
+    elmArr[i].setAttribute('id', parts[i])
   }
   // create counter variables
   let headCount = 3;
   let bodyCount = 4;
   let shoesCount = 4;
 
+  //create variable to hold current count
+  let currentCount = headCount
+  //create variable to hold current element
+  let currentElm = elmArr[0]
+  //create variable to hold current part
+  let currentPart = head
+
   
 
 
-// create function to change forward
-// takes in counter for body part
-// takes in image element to change
-// takes in array of images
-const changeForward = (partCount, elm, arr) => {
- partCount++ 
- elm.setAttribute('src', arr[partCount])
-};
-// changeForward(headCount, elmArr[0], head)
+// create function to change forward & back
+//if count is equal to image arr.length - 1
+//set count to 0 else increment
+//if count is equal to 0
+// set count to image array.lengh - 1 else decrement
+// set current image src attribute to arrImages[count]
 
-// create function to change forward
-// takes in counter for body part
-// takes in image element to change
-// takes in array of images
-const changeBackward = (partCount, elm, arr) => {
-  partCount-- 
-  elm.setAttribute('src', arr[partCount])
- };
-//  changeForward(bodyCount, elmArr[1], body)
+const changeForward = () => {
+  if (currentCount >= currentPart.length - 1) {
+    currentCount = 0
+  } else {
+    currentCount++
+    console.log(currentCount)
+  }
+  currentElm.setAttribute('src', currentPart[currentCount])
+}
+
+const changeBackward = () => {
+  if (currentCount === 0) {
+    currentCount = currentPart.length - 1
+  } else {
+    currentCount--
+    console.log(currentCount)
+  }
+  currentElm.setAttribute('src', currentPart[currentCount])
+}
+
+
+
+
+
+
+
+
+
+
+
+// create slider function and assign to left-right-down-up arrow keys
+const leftRightArrows = (e) => {
+  e.preventDefault()
+  console.log(e.keyCode)
+  if (e.keyCode === 37) {
+    changeBackward()
+    console.log('left')
+  } else if (e.keyCode === 39) {
+    changeForward()
+    console.log('right')
+  }
+}
+
+document.addEventListener('keydown', leftRightArrows)
+
+// // create slide function and assign to down-up arrow keys
+// const downUpArrows = (e) => {
+//   e.preventDefault()
+//   console.log(e.keyCode)
+// }
+// document.addEventListener('keydown', downUpArrows)
